@@ -30,6 +30,7 @@ const Login = () => {
             if (Data) {
                 localStorage.setItem("Logined", true);
                 localStorage.setItem("Token", Data.token);
+                localStorage.setItem("username", Data.firstName);
 
                 if (Data.role === "user") {
                     navigate("/user");
