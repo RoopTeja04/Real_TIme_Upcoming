@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 const Account = () => {
 
-    const [account, setAccount] = useState(null);
+    const [account, setAccount] = useState();
 
     const UserName = localStorage.getItem("username")
 
@@ -12,6 +12,7 @@ const Account = () => {
             try {
                 const response = await axios.get(`http://localhost:5000/admin/account/${UserName}`);
                 setAccount(response.data);
+
             }
             catch (err) {
                 if (err.response && err.response.status === 404) {
@@ -26,7 +27,20 @@ const Account = () => {
     })
 
     return (
-        <div>Account {account.firstName}, {account.lastName}</div>
+        <>
+            {account ? (
+                <div className="mt-4 p-4">
+                    <h2 className="text-xl font-bold">
+                        {account.firstName} {account.lastName}
+                    </h2>
+                    <p>Email: {account.email}</p>
+                    <p>Role: {account.role}</p>
+                </div>
+            ) : (
+                <p className="mt-3 text-red-500"></p>
+            )}
+
+        </>
     )
 }
 
