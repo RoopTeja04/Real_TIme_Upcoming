@@ -3,6 +3,7 @@ import { FaUser, FaSun, FaMoon, FaHome, FaSearch, FaCog } from 'react-icons/fa';
 import { MdKeyboardDoubleArrowRight, MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { useTheme } from '../Context_API/ThemeContext';
 import { useState } from 'react';
+import { FaUserPlus } from "react-icons/fa";
 
 const Admin = () => {
     const UserName = localStorage.getItem("username");
@@ -18,7 +19,7 @@ const Admin = () => {
             <div
                 className={`h-full ${showNav ? "w-48" : "w-20"} 
                 flex flex-col px-3.5 py-8 border-r-2
-                ${theme ? "bg-gray-900 text-white border-gray-200" : "bg-white text-black border-gray-800 items-start"}
+                ${theme ? "bg-gray-900 text-white border-gray-200 items-start" : "bg-white text-black border-gray-800 items-start"}
                 transition-all duration-900 ease-in-out`}
             >
                 <button
@@ -27,16 +28,19 @@ const Admin = () => {
                 >
                     {showNav ? <MdKeyboardDoubleArrowLeft size={24} /> : <MdKeyboardDoubleArrowRight size={24} />}
                 </button>
-                <nav className="flex flex-col gap-4 px-4 space-y-6">
-                    <Link to="/admin" className="flex items-center gap-3 hover:opacity-80">
-                        <FaHome size={24} /> {showNav && <span>Dashboard</span>}
+                <nav className="flex flex-col gap-6 px-4 space-y-2 mt-4 ">
+                    <Link to="home" className="flex items-center gap-3 hover:opacity-80">
+                        <FaHome size={24} /> {showNav && <span>Home</span>}
+                    </Link>
+                    <Link to="register" className="flex items-center gap-3 hover:opacity-80" >
+                        <FaUserPlus size={24} /> { showNav && <span>Register</span> }
                     </Link>
                 </nav>
             </div>
 
             <div className="flex flex-col flex-1">
                 <div
-                    className={`h-16 flex items-center bg-green-500 ${theme ? "text-white" : "text-black"
+                    className={`h-16 flex items-center bg-green-700 ${theme ? "text-gray-300" : "text-black"
                         } transition-colors duration-500 ease-in-out`}
                 >
                     <div className="flex flex-row px-6 w-full justify-between">
