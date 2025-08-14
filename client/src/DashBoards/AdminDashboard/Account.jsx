@@ -1,5 +1,6 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { FaUserCircle } from 'react-icons/fa';
 
 const Account = () => {
 
@@ -28,18 +29,26 @@ const Account = () => {
 
     return (
         <>
-            {account ? (
-                <div className="mt-4 p-4">
-                    <h2 className="text-xl font-bold">
-                        {account.firstName} {account.lastName}
-                    </h2>
-                    <p>Email: {account.email}</p>
-                    <p>Role: {account.role}</p>
+            <div className='border-1 border-black flex flex-col rounded-md'>
+                <div className='flex flex-row items-center py-10 px-10 space-x-10'>
+                    <FaUserCircle
+                        size={84}
+                    />
+                    {
+                        account ? (
+                            <div className="">
+                                <h2 className="text-xl font-bold">
+                                    {account.firstName} {account.lastName}
+                                </h2>
+                                <p className=''>Email: {account.emailID}</p>
+                                <p className='capitalize'>{account.role}</p>
+                            </div>
+                        ) : (
+                            <p>Some Thing Went Wrong ! Please Try Again Later</p>
+                        )
+                    }
                 </div>
-            ) : (
-                <p className="mt-3 text-red-500"></p>
-            )}
-
+            </div>
         </>
     )
 }
