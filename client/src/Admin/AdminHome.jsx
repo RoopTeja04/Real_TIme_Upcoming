@@ -47,7 +47,9 @@ const AdminHome = () => {
             const response = await axios.get("http://localhost:5000/admin/all")
             const studentData = response.data
             const CountStudents = studentData.filter(stu => stu.role === "user").length;
-            setCounts({users: CountStudents})
+            setCounts(prev => ({
+                ...prev, users: CountStudents
+            }))
         }
         catch (err) {
             console.error(err)
@@ -58,7 +60,9 @@ const AdminHome = () => {
             const response = await axios.get("http://localhost:5000/admin/all")
             const studentData = response.data
             const CountStudents = studentData.filter(stu => stu.role === "admin").length;
-            setCounts({admin: CountStudents})
+            setCounts(prev => ({
+                ...prev, admin: CountStudents
+            }))
         }
         catch (err) {
             console.error(err)
@@ -70,7 +74,9 @@ const AdminHome = () => {
             const response = await axios.get("http://localhost:5000/admin/all")
             const studentData = response.data
             const CountStudents = studentData.filter(stu => stu.role === "mentor").length;
-            setCounts({mentor: CountStudents})
+            setCounts(prev => ({
+                ...prev, mentor: CountStudents
+            }))
         }
         catch (err) {
             console.error(err)
@@ -81,7 +87,9 @@ const AdminHome = () => {
             const response = await axios.get("http://localhost:5000/admin/all")
             const studentData = response.data
             const CountStudents = studentData.filter(stu => stu.role === "instructor").length;
-            setCounts({instructor: CountStudents})
+            setCounts(prev => ({
+                ...prev, instructor: CountStudents
+            }))
         }
         catch (err) {
             console.error(err)

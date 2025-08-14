@@ -9,6 +9,7 @@ import ForgotPassWord from './Components/ForgotPassWord';
 import Account from './DashBoards/AdminDashboard/Account';
 import AdminHome from './Admin/AdminHome';
 import Register from './Admin/Register';
+import AllData from './Admin/AllData';
 
 const App = () => {
   return (
@@ -21,10 +22,10 @@ const App = () => {
         <Route path='/instructor' element={<Instructor />} />
         <Route path='/admin' element={<Admin />} >
           <Route index element={<AdminHome />} />
-          <Route path='home' element={<AdminHome />} >
-          </Route>
+          <Route path='home' element={<AdminHome />} />
           <Route path='register' element={<Register />} />
           <Route path="account" element={<Account />} />
+          <Route path='data' element={<AllData />} />
         </Route>
       </Routes>
     </>

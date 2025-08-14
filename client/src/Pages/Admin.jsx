@@ -1,5 +1,6 @@
 import { Outlet, Link } from 'react-router-dom';
-import { FaUser, FaSun, FaMoon, FaHome, FaSearch, FaCog } from 'react-icons/fa';
+import { FaUser, FaSun, FaMoon, FaHome } from 'react-icons/fa';
+import { FiDatabase } from 'react-icons/fi';
 import { MdKeyboardDoubleArrowRight, MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { useTheme } from '../Context_API/ThemeContext';
 import { useState } from 'react';
@@ -34,6 +35,9 @@ const Admin = () => {
                     </Link>
                     <Link to="register" className="flex items-center gap-3 hover:opacity-80" >
                         <FaUserPlus size={24} /> { showNav && <span>Register</span> }
+                    </Link>
+                    <Link to="data" className="flex items-center gap-3 hover:opacity-80" >
+                        <FiDatabase size={24} /> { showNav && <span>Data</span> }
                     </Link>
                 </nav>
             </div>
