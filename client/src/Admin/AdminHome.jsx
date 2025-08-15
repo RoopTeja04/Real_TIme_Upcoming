@@ -40,7 +40,7 @@ const AdminHome = () => {
 
         }
         FetchData();
-    })
+    }, []);
 
     const handleCountUsers = async () => {
         try {
@@ -98,69 +98,70 @@ const AdminHome = () => {
 
     return (
         <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 p-8">
 
                 <div
-                    className={`relative rounded-2xl p-6 shadow-lg flex flex-col items-center justify-center transition transform hover:scale-105
-                    ${theme ? "bg-gradient-to-br from-blue-500 to-green-400 text-white" : "bg-gradient-to-br from-blue-200 to-green-100 text-black"}`}
+                    className={`relative rounded-2xl p-6 shadow-xl flex flex-col items-center justify-center transition-all duration-300 transform hover:scale-105 hover:shadow-2xl backdrop-blur-sm border
+                    ${theme ? "bg-gradient-to-br from-cyan-600 via-sky-500 to-blue-900 text-white border-white/20" : "bg-gradient-to-br from-cyan-300 via-sky-150 to-blue-400 text-gray-900 border-gray-200"}`}
                 >
                     <button
                         onClick={handleCountUsers}
-                        className={`absolute top-3 right-3 p-2 rounded-full transition
-                        ${theme ? "bg-white/20 hover:bg-white/30 text-white" : "bg-black/10 hover:bg-black/20 text-black"} cursor-pointer`}
+                        className={`absolute top-3 right-3 p-2 rounded-full transition-all duration-200 hover:rotate-180
+                        ${theme ? "bg-white/20 hover:bg-white/30 text-white" : "bg-black/10 hover:bg-black/20 text-gray-800"} cursor-pointer`}
                     >
                         <FiRefreshCcw size={18} />
                     </button>
-                    <span className="text-5xl font-bold">{counts.users}</span>
-                    <span className="mt-2 text-lg font-medium">Users</span>
+                    <span className="text-5xl font-extrabold drop-shadow-sm">{counts.users}</span>
+                    <span className="mt-2 text-lg font-semibold tracking-wide">Users</span>
                 </div>
 
                 <div
-                    className={`relative rounded-2xl p-6 shadow-lg flex flex-col items-center justify-center transition transform hover:scale-105
-                    ${theme ? "bg-gradient-to-br from-yellow-500 to-orange-400 text-white" : "bg-gradient-to-br from-yellow-200 to-orange-100 text-black"} `}
+                    className={`relative rounded-2xl p-6 shadow-xl flex flex-col items-center justify-center transition-all duration-300 transform hover:scale-105 hover:shadow-2xl backdrop-blur-sm border
+                    ${theme ? "bg-gradient-to-br from-emerald-600 via-green-600 to-lime-900 text-white border-white/20" : "bg-gradient-to-br from-emerald-300 via-green-150 to-lime-400 text-gray-900 border-gray-200"}`}
                 >
                     <button
                         onClick={handleCountMentors}
-                        className={`absolute top-3 right-3 p-2 rounded-full transition
-                        ${theme ? "bg-white/20 hover:bg-white/30 text-white" : "bg-black/10 hover:bg-black/20 text-black"} cursor-pointer`}
+                        className={`absolute top-3 right-3 p-2 rounded-full transition-all duration-200 hover:rotate-180
+                        ${theme ? "bg-white/20 hover:bg-white/30 text-white" : "bg-black/10 hover:bg-black/20 text-gray-800"} cursor-pointer`}
                     >
                         <FiRefreshCcw size={18} />
                     </button>
-                    <span className="text-5xl font-bold">{counts.mentor}</span>
-                    <span className="mt-2 text-lg font-medium">Mentors</span>
+                    <span className="text-5xl font-extrabold drop-shadow-sm">{counts.mentor}</span>
+                    <span className="mt-2 text-lg font-semibold tracking-wide">Mentors</span>
                 </div>
 
                 <div
-                    className={`relative rounded-2xl p-6 shadow-lg flex flex-col items-center justify-center transition transform hover:scale-105
-                    ${theme ? "bg-gradient-to-br from-purple-500 to-pink-400 text-white" : "bg-gradient-to-br from-purple-200 to-pink-100 text-black"}`}
+                    className={`relative rounded-2xl p-6 shadow-xl flex flex-col items-center justify-center transition-all duration-300 transform hover:scale-105 hover:shadow-2xl backdrop-blur-sm border
+                    ${theme ? "bg-gradient-to-br from-fuchsia-600 via-purple-600 to-indigo-900 text-white border-white/20" : "bg-gradient-to-br from-fuchsia-300 via-purple-150 to-indigo-400 text-gray-900 border-gray-200"}`}
                 >
                     <button
                         onClick={handleCountInstructor}
-                        className={`absolute top-3 right-3 p-2 rounded-full transition
-                        ${theme ? "bg-white/20 hover:bg-white/30 text-white" : "bg-black/10 hover:bg-black/20 text-black"} cursor-pointer`}
+                        className={`absolute top-3 right-3 p-2 rounded-full transition-all duration-200 hover:rotate-180
+                        ${theme ? "bg-white/20 hover:bg-white/30 text-white" : "bg-black/10 hover:bg-black/20 text-gray-800"} cursor-pointer`}
                     >
                         <FiRefreshCcw size={18} />
                     </button>
-                    <span className="text-5xl font-bold">{counts.instructor}</span>
-                    <span className="mt-2 text-lg font-medium">Instructor</span>
+                    <span className="text-5xl font-extrabold drop-shadow-sm">{counts.instructor}</span>
+                    <span className="mt-2 text-lg font-semibold tracking-wide">Instructor</span>
                 </div>
 
                 <div
-                    className={`relative rounded-2xl p-6 shadow-lg flex flex-col items-center justify-center transition transform hover:scale-105
-                    ${theme ? "bg-gradient-to-br from-red-500 to-pink-500 text-white" : "bg-gradient-to-br from-red-200 to-pink-100 text-black"}`}
+                    className={`relative rounded-2xl p-6 shadow-xl flex flex-col items-center justify-center transition-all duration-300 transform hover:scale-105 hover:shadow-2xl backdrop-blur-sm border
+                    ${theme ? "bg-gradient-to-br from-rose-600 via-pink-600 to-red-900 text-white border-white/20" : "bg-gradient-to-br from-rose-300 via-pink-150 to-red-400 text-gray-900 border-gray-200"}`}
                 >
                     <button
                         onClick={handleCountAdmin}
-                        className={`absolute top-3 right-3 p-2 rounded-full transition
-                        ${theme ? "bg-white/20 hover:bg-white/30 text-white" : "bg-black/10 hover:bg-black/20 text-black"} cursor-pointer`}
+                        className={`absolute top-3 right-3 p-2 rounded-full transition-all duration-200 hover:rotate-180
+                        ${theme ? "bg-white/20 hover:bg-white/30 text-white" : "bg-black/10 hover:bg-black/20 text-gray-800"} cursor-pointer`}
                     >
                         <FiRefreshCcw size={18} />
                     </button>
-                    <span className="text-5xl font-bold">{counts.admin}</span>
-                    <span className="mt-2 text-lg font-medium">Admins</span>
+                    <span className="text-5xl font-extrabold drop-shadow-sm">{counts.admin}</span>
+                    <span className="mt-2 text-lg font-semibold tracking-wide">Admins</span>
                 </div>
 
             </div>
+
         </>
     );
 

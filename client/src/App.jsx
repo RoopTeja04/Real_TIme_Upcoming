@@ -6,7 +6,7 @@ import Mentor from './Pages/Mentor';
 import Instructor from './Pages/Instructor';
 import Admin from './Pages/Admin';
 import ForgotPassWord from './Components/ForgotPassWord';
-import Account from './DashBoards/AdminDashboard/Account';
+import Account from './Admin/Account';
 import AdminHome from './Admin/AdminHome';
 import Register from './Admin/Register';
 import AllData from './Admin/AllData';

@@ -1,8 +1,8 @@
 const express = require("express")
 const router = express.Router();
-const { getAll, getAllByName } = require("../controllers/DataController");
+const { getAll } = require("../controllers/DataController");
+const protect = require("../middleware/Authorization");
 
-router.get("/all", getAll );
-router.get("/account/:name", getAllByName);
+router.get("/all", protect,  getAll );
 
 module.exports = router;

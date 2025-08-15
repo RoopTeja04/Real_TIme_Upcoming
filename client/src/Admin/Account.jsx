@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
-import API from '../../API/api';
+import API from '../API/api';
 
 const Account = () => {
 

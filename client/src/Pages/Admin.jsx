@@ -1,22 +1,32 @@
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useNavigate } from 'react-router-dom';
 import { FaUser, FaSun, FaMoon, FaHome } from 'react-icons/fa';
 import { FiDatabase } from 'react-icons/fi';
 import { MdKeyboardDoubleArrowRight, MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { useTheme } from '../Context_API/ThemeContext';
 import { useState } from 'react';
 import { FaUserPlus } from "react-icons/fa";
+import { LogOut } from "lucide-react";
 
 const Admin = () => {
     const UserName = localStorage.getItem("username");
     const { theme, handleThemeSwitcher } = useTheme();
     const [showNav, setShowNav] = useState(false);
 
+    const navigate = useNavigate();
+
     const handleToggleNav = () => {
         setShowNav(!showNav);
     };
 
+    const handleLogOut = () => {
+        localStorage.removeItem("username");
+        localStorage.removeItem("Token");
+        localStorage.removeItem("Logined")
+        navigate("/")
+    }
+
     return (
-        <div className={`flex h-screen ${theme ? "text-white" : "text-black"}` }>
+        <div className={`flex h-screen ${theme ? "text-white" : "text-black"}`}>
             <div
                 className={`h-full ${showNav ? "w-48" : "w-20"} 
                 flex flex-col px-3.5 py-8 border-r-2
@@ -34,10 +44,10 @@ const Admin = () => {
                         <FaHome size={24} /> {showNav && <span>Home</span>}
                     </Link>
                     <Link to="register" className="flex items-center gap-3 hover:opacity-80" >
-                        <FaUserPlus size={24} /> { showNav && <span>Register</span> }
+                        <FaUserPlus size={24} /> {showNav && <span>Register</span>}
                     </Link>
                     <Link to="data" className="flex items-center gap-3 hover:opacity-80" >
-                        <FiDatabase size={24} /> { showNav && <span>Data</span> }
+                        <FiDatabase size={24} /> {showNav && <span>Data</span>}
                     </Link>
                 </nav>
             </div>
@@ -61,6 +71,12 @@ const Admin = () => {
                                 className="cursor-pointer transition-transform duration-300 hover:scale-110"
                             >
                                 {theme ? <FaSun size={20} /> : <FaMoon size={20} />}
+                            </button>
+                            <button
+                                onClick={handleLogOut}
+                                className="px-4 py-2 rounded-lg bg-red-500 hover:bg-red-700 active:scale-95 transition-shadow shadow-md hover:shadow-lg cursor-pointer"
+                            >
+                                <LogOut className="w-5 h-5" />
                             </button>
                         </div>
                     </div>
