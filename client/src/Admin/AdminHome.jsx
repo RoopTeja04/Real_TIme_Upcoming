@@ -12,36 +12,59 @@ const AdminHome = () => {
         admin: 0,
     });
 
+    const [targetCounts, setTargetCounts] = useState({
+        users: 0,
+        mentor: 0,
+        instructor: 0,
+        admin: 0,
+    });
+
     const { theme } = useTheme();
 
     useEffect(() => {
-
         const FetchData = async () => {
-
             try {
-                const response = await API.get("/admin/all")
-
+                const response = await API.get("/admin/all");
                 if (response.status !== 200)
                     return alert("Something went wrong ! please try again");
 
                 const Data = response.data;
-
-                setCounts({
+                const newCounts = {
                     users: Data.filter(u => u.role === "user").length,
                     mentor: Data.filter(u => u.role === "mentor").length,
                     instructor: Data.filter(u => u.role === "instructor").length,
                     admin: Data.filter(u => u.role === "admin").length,
-                });
+                };
 
+                setTargetCounts(newCounts); // store final values for animation
+            } catch (err) {
+                console.error(err);
             }
-            catch (err) {
-                console.error(err)
-            }
-
-        }
+        };
         FetchData();
     }, []);
 
+    // Animate counts when targetCounts changes
+    useEffect(() => {
+        const duration = 1000; // 1 second animation
+        const steps = 30;
+        const stepTime = duration / steps;
+
+        let step = 0;
+        const interval = setInterval(() => {
+            step++;
+            setCounts(prev => ({
+                users: Math.round((targetCounts.users / steps) * step),
+                mentor: Math.round((targetCounts.mentor / steps) * step),
+                instructor: Math.round((targetCounts.instructor / steps) * step),
+                admin: Math.round((targetCounts.admin / steps) * step),
+            }));
+            if (step >= steps) clearInterval(interval);
+        }, stepTime);
+
+        return () => clearInterval(interval);
+    }, [targetCounts]);
+    
     const handleCountUsers = async () => {
         try {
             const response = await API.get("/admin/all")

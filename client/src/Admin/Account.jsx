@@ -5,6 +5,7 @@ import API from '../API/api';
 const Account = () => {
 
     const [account, setAccount] = useState();
+    const [ error, setError ] = useState("");
 
     const UserName = localStorage.getItem("username")
 
