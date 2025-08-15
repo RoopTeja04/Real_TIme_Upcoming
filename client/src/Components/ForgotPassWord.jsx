@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import API from "../API/api";
 
 const ForgotPassWord = () => {
 
@@ -34,7 +34,7 @@ const ForgotPassWord = () => {
             if (formData.confirmPassword !== formData.newPassword)
                 return alert("Password not Matched!");
 
-            const response = await axios.post("http://localhost:5000/auth/update-password", { emailID: formData.email, password: formData.confirmPassword });
+            const response = await API.post("/auth/update-password", { emailID: formData.email, password: formData.confirmPassword });
 
             if (response.status === 200) {
                 alert("Password changed Successfully");

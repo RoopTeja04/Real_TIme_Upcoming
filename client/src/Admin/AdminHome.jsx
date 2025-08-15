@@ -1,7 +1,7 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useTheme } from '../Context_API/ThemeContext';
 import { FiRefreshCcw } from "react-icons/fi";
+import API from '../API/api';
 
 const AdminHome = () => {
 
@@ -19,7 +19,7 @@ const AdminHome = () => {
         const FetchData = async () => {
 
             try {
-                const response = await axios.get("http://localhost:5000/admin/all")
+                const response = await API.get("/admin/all")
 
                 if (response.status !== 200)
                     return alert("Something went wrong ! please try again");
@@ -44,7 +44,7 @@ const AdminHome = () => {
 
     const handleCountUsers = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/admin/all")
+            const response = await API.get("/admin/all")
             const studentData = response.data
             const CountStudents = studentData.filter(stu => stu.role === "user").length;
             setCounts(prev => ({
@@ -57,7 +57,7 @@ const AdminHome = () => {
     }
     const handleCountAdmin = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/admin/all")
+            const response = await API.get("/admin/all")
             const studentData = response.data
             const CountStudents = studentData.filter(stu => stu.role === "admin").length;
             setCounts(prev => ({
@@ -71,7 +71,7 @@ const AdminHome = () => {
 
     const handleCountMentors = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/admin/all")
+            const response = await API.get("/admin/all")
             const studentData = response.data
             const CountStudents = studentData.filter(stu => stu.role === "mentor").length;
             setCounts(prev => ({
@@ -84,7 +84,7 @@ const AdminHome = () => {
     }
     const handleCountInstructor = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/admin/all")
+            const response = await API.get("/admin/all")
             const studentData = response.data
             const CountStudents = studentData.filter(stu => stu.role === "instructor").length;
             setCounts(prev => ({

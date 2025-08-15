@@ -1,5 +1,5 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import API from '../API/api';
 
 const AllData = () => {
     const [data, setData] = useState([]);
@@ -10,7 +10,7 @@ const AllData = () => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const response = await axios.get("http://localhost:5000/admin/all");
+                const response = await API.get("/admin/all");
 
                 if (response.status !== 200) {
                     alert("Something went wrong! Please try again");

@@ -1,6 +1,6 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
+import API from '../../API/api';
 
 const Account = () => {
 
@@ -11,7 +11,7 @@ const Account = () => {
     useEffect(() => {
         const FetchAccount = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/admin/account/${UserName}`);
+                const response = await API.get(`/admin/account/${UserName}`);
                 setAccount(response.data);
 
             }

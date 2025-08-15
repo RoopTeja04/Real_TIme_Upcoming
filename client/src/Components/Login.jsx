@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-import axios from 'axios'
 import { useNavigate } from "react-router-dom"
 import { motion } from "framer-motion";
+import API from '../API/api';
 
 const Login = () => {
 
@@ -20,7 +20,7 @@ const Login = () => {
     const handleLogin = async () => {
 
         try {
-            const response = await axios.post("http://localhost:5000/auth/login", {
+            const response = await API.post("/auth/login", {
                 emailID: userDetails.emailID,
                 password: userDetails.passWord
             })
@@ -62,10 +62,8 @@ const Login = () => {
                         "url('https://images.squarespace-cdn.com/content/v1/554b8150e4b01cb58c517c75/1726074926880-VG56O3XRWWJDUS9OX2DB/image-asset.jpeg')",
                 }}
             >
-                {/* Dark overlay */}
                 <div className="absolute inset-0 bg-black/50"></div>
 
-                {/* Card */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8, y: 20 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -78,7 +76,7 @@ const Login = () => {
                     <p className="text-gray-200 text-sm sm:text-md">Login to continue</p>
 
                     <div className="flex flex-col w-full space-y-6 relative">
-                        {/* Email */}
+
                         <motion.input
                             whileFocus={{ scale: 1.02 }}
                             transition={{ duration: 0.2 }}
@@ -90,7 +88,6 @@ const Login = () => {
                             }
                         />
 
-                        {/* Password */}
                         <motion.div
                             className="relative"
                             whileFocus={{ scale: 1.02 }}
@@ -119,7 +116,6 @@ const Login = () => {
                         </motion.div>
                     </div>
 
-                    {/* Forgot Password */}
                     <motion.p
                         onClick={() => navigate("/login/forgot-password")}
                         className="text-md cursor-pointer hover:underline"
@@ -127,7 +123,6 @@ const Login = () => {
                         Forgot Password?
                     </motion.p>
 
-                    {/* Login Button */}
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
