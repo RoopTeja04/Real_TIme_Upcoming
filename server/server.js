@@ -4,7 +4,9 @@ const cors = require("cors")
 const dotenv = require("dotenv").config();
 const AuthRoutes = require("./routes/AuthRoutes");
 const AdminRoutes = require("./routes/AdminRoute");
-
+const CourseRoutes = require("./routes/courseRoute");
+const batchRoutes = require("./routes/batchRoute");
+  
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -16,6 +18,10 @@ app.get("/", (req, res) => {
 app.use("/auth", AuthRoutes)
 
 app.use("/admin", AdminRoutes)
+
+app.use("/course", CourseRoutes)
+
+app.use("/batch", batchRoutes)
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("MongoDB is Connected"))
